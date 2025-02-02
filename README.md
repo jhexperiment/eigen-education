@@ -20,7 +20,7 @@ The web app is a react application that uses:
 - [React](https://react.dev) for the UI
 - [React Query](https://tanstack.com/query/latest/docs/framework/react/overview) for data fetching
 - [React Router](https://reactrouter.com) for routing
-- [PrimeVue](https://primevue.org) for the UI components
+- [PrimeReact](https://primereact.org) for the UI components
 - [TailwindCSS](https://tailwindcss.com) for styling
 - [dotenv](https://www.npmjs.com/package/dotenv) for environment variables
 - The component library
