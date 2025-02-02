@@ -1,0 +1,21 @@
+query GetStakers(
+  $skip: Int = 0
+  $first: Int = 100
+  $orderBy: Staker_orderBy = depositCount
+  $orderDirection: OrderDirection = desc
+  $where: Staker_filter
+) {
+  stakers(
+    skip: $skip
+    first: $first
+    orderBy: $orderBy
+    orderDirection: $orderDirection
+    where: $where
+  ) {
+    address
+    depositCount
+    withdrawalCount
+    delegationCount
+    operatorCount
+  }
+}

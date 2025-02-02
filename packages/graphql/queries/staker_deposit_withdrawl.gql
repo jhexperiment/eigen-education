@@ -1,0 +1,56 @@
+query GetStakerDepositWithdraw($address: String!, $first: Int = 1000) {
+  staker(id: $address) {
+    id
+    address
+    depositCount
+    withdrawalCount
+    deposits(first: $first, orderBy: blockTimestamp, orderDirection: desc) {
+      id
+      strategy {
+        id
+        address
+        token {
+          name
+          symbol
+          decimals
+        }
+      }
+      shares
+      blockNumber
+      blockTimestamp
+      transactionHash
+    }
+    withdrawals(
+      first: $first
+      orderBy: start_blockTimestamp
+      orderDirection: desc
+    ) {
+      id
+      operator {
+        id
+        metadataURI
+      }
+      withdrawer
+      strategies {
+        address
+        token {
+          name
+          symbol
+          decimals
+        }
+      }
+      shares
+      scaledShares
+      depositShares
+      shares_withdrawn
+      receiveAsTokens
+      completed
+      nonce
+      root
+      roots
+      start_blockNumber
+      start_blockTimestamp
+      start_transactionHash
+    }
+  }
+}
