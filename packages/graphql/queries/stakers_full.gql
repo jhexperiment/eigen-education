@@ -1,0 +1,62 @@
+query GetStakersFull {
+  stakers(first: 5) {
+    id
+    address
+    balanceCount
+    balances {
+      id
+      strategy {
+        id
+        address
+        token {
+          address
+          name
+          symbol
+        }
+        totalShares
+        exchangeRate
+        emitsExchangeRate
+      }
+      depositShares
+      depositScalingFactor
+      beaconChainScalingFactor
+    }
+    depositCount
+    deposits {
+      id
+      token {
+        address
+        name
+        symbol
+      }
+      shares
+    }
+    withdrawalCount
+    withdrawals {
+      id
+      strategies {
+        id
+        address
+        token {
+          address
+          name
+          symbol
+        }
+      }
+      shares
+      scaledShares
+      depositShares
+      receiveAsTokens
+      isUndelegationQueue
+      completed
+      nonce
+      root
+      withdrawer
+      roots
+      start_maxMagnitudes
+      completable_maxMagnitudes
+      shares_withdrawn
+    }
+    delegationCount
+  }
+}

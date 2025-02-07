@@ -1,0 +1,71 @@
+query GetAvssFull {
+  avss(first: 5, where: {metadataURI_not: ""}) {
+    id
+    owner
+    operatorCount
+    operators {
+      id
+      avs {
+        id
+        owner
+      }
+      operator {
+        id
+        metadataURI
+        delegationApprover
+        stakerOptOutWindowBlocks
+        registeredBlockNumber
+        registeredBlockTimestamp
+        registeredTransactionHash
+        magnitudeInfos(first:1) {
+          currentMagnitude
+          pendingMagnitude
+          effectBlock
+        }
+      }
+      registrationStatus 
+    }
+    operatorSetCount
+    slashingCount
+    slashings(first:5) {
+      strategies
+      wadSlashed
+      description
+      blockNumber
+      blockTimestamp
+      transactionHash
+    }
+    strategyCount
+    strategies(first:5) {
+      strategy {
+        id
+        address
+        token {
+          id
+          address
+          name
+          symbol
+          decimals
+        }
+        totalShares
+        exchangeRate
+        emitsExchangeRate
+        isInDepositWhitelist
+        withdrawalDelayBlocks
+        thirdPartyTransfersForbidden
+        whitelistBlockNumber
+        whitelistBlockTimestamp
+        whitelistTransactionHash
+      }
+      operatorSetCount
+      registrationStatus
+      totalShares
+      stakerCount
+    }
+    stakerCount
+    metadataURI
+    lastUpdateBlockNumber
+    lastUpdateBlockTimestamp
+  }
+}
+

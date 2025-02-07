@@ -1,0 +1,21 @@
+query GetDeposits($address: String!, $first: Int = 100) {
+  deposits(first: $first, where: { staker_: { address: $address } }) {
+    id
+    token {
+      name
+      symbol
+    }
+    staker {
+      address
+    }
+    strategy {
+      address
+      token {
+        name
+        symbol
+      }
+      totalShares
+    }
+    shares
+  }
+}
