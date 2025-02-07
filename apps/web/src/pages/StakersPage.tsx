@@ -2,7 +2,11 @@
 import { useQuery } from "@tanstack/react-query";
 import request from "graphql-request";
 import React, { useRef, useState } from "react";
-import { Staker, StakersQueryResponse } from "../lib/types";
+import {
+  Staker,
+  StakersQueryResponse,
+  SubgraphErrorResponse,
+} from "../lib/types";
 import GetStakersQuery from "@repo/graphql/queries/stakers.gql";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
@@ -123,7 +127,11 @@ const StakersPage: React.FC = () => {
     lazyState.sortField || undefined,
     lazyState.sortOrder || undefined,
     lazyState.filters
-  );
+  ) as {
+    data: StakersQueryResponse | undefined;
+    error: SubgraphErrorResponse | null;
+    isLoading: boolean;
+  };
   const navigate = useNavigate();
 
   /**

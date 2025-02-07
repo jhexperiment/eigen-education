@@ -197,3 +197,12 @@ export interface StakersQueryResponse {
 export interface StakerQueryResponse {
   staker: Staker;
 }
+
+/**
+ * Error Response
+ */
+export interface SubgraphErrorResponse extends Error {
+  response?: {
+    errors?: { message: string }[];
+  };
+}

@@ -8,6 +8,7 @@ import {
   Withdrawal,
   Strategy,
   Operator,
+  SubgraphErrorResponse,
 } from "../lib/types";
 import { useQuery } from "@tanstack/react-query";
 import GetStakerDepositWithdraw from "@repo/graphql/queries/staker_deposit_withdrawl.gql";
@@ -222,7 +223,10 @@ const StakerPage: React.FC = () => {
 
   if (!address) return <p>No address provided</p>;
 
-  const { data, error } = useStakerDepositWithdrawl(address);
+  const { data, error } = useStakerDepositWithdrawl(address) as {
+    data: StakerQueryResponse | undefined;
+    error: SubgraphErrorResponse | null;
+  };
 
   const [metadataCache, setMetadataCache] = useState<any>({});
 
